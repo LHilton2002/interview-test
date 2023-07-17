@@ -1,32 +1,36 @@
 import { useState } from "react";
+
 import { useRouter } from "next/router";
+
 import Head from "next/head";
 
- const LoginPage = () => {
-   const [username, setUsername] = useState("");
-   const [password, setPassword] = useState("");
-   const [error, setError] = useState("");
-   const router = useRouter();
+import "./login.css";
 
-   const handleLogin = async (e: React.FormEvent) => {
-      e.preventDefault();
+const LoginPage = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
 
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-      if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem("token", data.token);
-        router.push("/profile");
-      } else {
-        setError("Invalid username or password");
-      }
-    };
+    const response = await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+      router.push("/profile");
+    } else {
+      setError("You have entered an invalid username or password. Try again");
+    }
+  };
 
   return (
     <section>
@@ -35,10 +39,9 @@ import Head from "next/head";
           <title>Login Page</title>
         </Head>
         <h1>Login</h1>
-        {error && <p>Error:{error}</p>}
-        <form onSubmit={handleLogin}>
-          <div>
-            <label htmlFor="username">Username</label>
+        <form className="login-form" onSubmit={handleLogin}>
+          <div className="control">
+            <label htmlFor="username">Username </label>
             <input
               type="text"
               id="Username"
@@ -46,8 +49,8 @@ import Head from "next/head";
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
-          <div>
-            <label htmlFor="password">Password</label>
+          <div className="control">
+            <label htmlFor="password">Password </label>
             <input
               type="password"
               id="password"
@@ -55,12 +58,14 @@ import Head from "next/head";
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit">Login</button>
+          <div className="actions">
+            <button type="submit">Login</button>
+          </div>
+          <div>{error && <p className="errortext">Error: {error}</p>}</div>
         </form>
       </div>
     </section>
   );
-}
+};
 
-
-  export default LoginPage;
+export default LoginPage;
