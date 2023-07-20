@@ -4,7 +4,8 @@ import { useRouter } from "next/router";
 
 import Head from "next/head";
 
-import "./login.css";
+import classes from "./index.module.css";
+import "styles/globals.css"
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -33,39 +34,37 @@ const LoginPage = () => {
   };
 
   return (
-    <section>
-      <div>
-        <Head>
-          <title>Login Page</title>
-        </Head>
-        <h1>Login</h1>
-        <form className="login-form" onSubmit={handleLogin}>
-          <div className="control">
-            <label htmlFor="username">Username </label>
-            <input
-              type="text"
-              id="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
-          <div className="control">
-            <label htmlFor="password">Password </label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <div className="actions">
-            <button type="submit">Login</button>
-          </div>
-          <div>{error && <p className="errortext">Error: {error}</p>}</div>
-        </form>
-      </div>
-    </section>
+    <section className="min-h-screen bg-red-400 flex items-center justify-center">
+      <Head>
+        <title>Login Page</title>
+      </Head>
+      <form className={classes.form} onSubmit={handleLogin}>
+        <div className={classes.control}>
+          <label htmlFor="username">Username </label>
+          <input
+            type="text"
+            id="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor="password">Password </label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div className={classes.actions}>
+          <button type="submit">Login</button>
+        </div>
+        <div>{error && <p className="errortext">Error: {error}</p>}</div>
+      </form>
+      </section>
   );
 };
+
 
 export default LoginPage;

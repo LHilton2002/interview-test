@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/LoginCard.js", "ui/FormCard.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/LoginCard.js", "ui/FormCard.js", "ui/Card.js"],
   "exclude": ["node_modules"]
 }

@@ -1,5 +1,8 @@
 .login-form {
-    padding: 1rem;
+    padding: 5rem;
+    margin: 1rem auto;
+    width: 20%;
+    max-width: 30rem;
   }
   
   .control {
