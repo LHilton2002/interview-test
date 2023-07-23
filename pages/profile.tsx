@@ -1,5 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import useAuth from "../hooks/useAuth";
 
 import { profileData } from "@/app/api/profile/route";
 import Head from "next/head";
@@ -7,6 +9,8 @@ import Head from "next/head";
 import "./profile.css";
 
 const ProfilePage = () => {
+  useAuth();
+
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
