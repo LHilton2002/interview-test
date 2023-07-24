@@ -70,8 +70,8 @@ const ProfilePage = () => {
             src="https://picsum.photos/200"
             alt="profile"
           />
-          <div className="profile-info">
-            <h2 className="profile-name">{profileData.username}</h2>
+          <div>
+          <h2 className="profile-name">{profileData.username}</h2>
             <ul className="profile-details">{profileData.email}</ul>
             <p className="profile-bio">{profileData.bio}</p>
           </div>
@@ -84,8 +84,8 @@ const ProfilePage = () => {
         <div className="grid grid-cols-3 gap-4">
           {userPosts.map((post) => (
             <div key={post.id} className="bg-white shadow-md rounded-lg p-4">
-              <img className="post-image" src={post.imageUrl} alt="post" />
-              <p className="post-description">{post.description}</p>
+              <img src={post.imageUrl} alt="post" />
+              <p>{post.description}</p>
       </div>
           ))}
         </div>

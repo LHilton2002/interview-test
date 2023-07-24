@@ -60,7 +60,7 @@ const LoginPage = () => {
         <div className={classes.actions}>
           <button type="submit">Login</button>
         </div>
-        <div>{error && <p className="errortext">Error: {error}</p>}</div>
+        {error && <p className={classes.error}>{error}</p>}
       </form>
       </section>
   );
